@@ -1,0 +1,55 @@
+# 🔧 Node modules (ambos lados)
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# 🛠️ Directorios de build/producción
+frontend/build/
+frontend/dist/
+backend/build/
+backend/dist/
+
+# 🌱 Archivos de entorno (NO se suben secretos)
+.env
+.env.*              # .env.local, .env.production, etc.
+frontend/.env
+backend/.env
+
+# 📸 Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# 🔍 Archivos de test y coverage
+coverage/
+*.lcov
+frontend/coverage/
+backend/coverage/
+
+# 📦 Lock files alternativos (por si cambiás npm/yarn/pnpm)
+yarn.lock
+pnpm-lock.yaml
+
+# 🌀 Cache de herramientas
+frontend/.parcel-cache/
+frontend/.next/
+frontend/.cache/
+backend/.cache/
+
+# 🛜 Directorios de despliegue (como Vercel/Netlify locales)
+.vercel/
+.netlify/
+*.swp
+
+# 🔩 TypeScript (si algún lado usa)
+*.tsbuildinfo
+
+# 🪝 Git Hooks personalizadas
+.husky/
+
+# 🔧 Otros binarios o salidas temporales
+*.tgz
+*.zip
+*.tmp
