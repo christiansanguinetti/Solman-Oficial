@@ -16,7 +16,6 @@ export const CarouselComponent = ({ categoria }) => {
 
   useEffect(() => {
     if (!categoria) return;
-
     axios
       .get(`http://localhost:5000/carousel?categoria=${categoria.toLowerCase()}`)
       .then((res) => setImagenes(res.data))
@@ -25,7 +24,6 @@ export const CarouselComponent = ({ categoria }) => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("¿Eliminar esta imagen?")) return;
-
     try {
       await axios.delete(`http://localhost:5000/carousel/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -44,25 +42,24 @@ export const CarouselComponent = ({ categoria }) => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto w-full max-w-screen-lg px-0 py-6">
       {imagenes.length === 0 ? (
-        <p className="text-center text-gray-600">No hay imágenes en esta categoría.</p>
+        <p className="text-center text-white/70">No hay imágenes en esta categoría.</p>
       ) : (
         <>
           <Swiper
             modules={[Navigation]}
             navigation
-            spaceBetween={30}
+            spaceBetween={0}
             slidesPerView={1}
             onSlideChange={(swiper) => setIndexActual(swiper.realIndex + 1)}
-            className="rounded-xl shadow-xl bg-white"
+            className="w-full h-full"
           >
             {imagenes.map((img) => (
               <SwiperSlide key={img._id}>
-                <div className="relative w-full flex justify-center items-center max-h-[80vh]">
+                <div className="relative w-full flex items-center justify-center overflow-hidden">
                   {token && (
                     <button
-                      type="button"
                       onClick={() => handleDelete(img._id)}
                       title="Eliminar imagen"
                       className="absolute top-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-full text-sm shadow-lg"
@@ -75,11 +72,11 @@ export const CarouselComponent = ({ categoria }) => {
                     src={`http://localhost:5000/${img.imageUrl}`}
                     alt={img.caption || "Imagen"}
                     onClick={abrirFullscreen}
-                    className="w-full h-auto object-contain rounded-lg max-h-[70vh] cursor-zoom-in transition-transform hover:scale-105"
+                    className="max-w-full max-h-[90vh] object-contain cursor-zoom-in transition-transform duration-300 hover:scale-105"
                   />
 
                   {img.caption && (
-                    <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white text-sm p-3 text-center rounded-b-xl">
+                    <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent text-white text-sm p-3 text-center">
                       {img.caption}
                     </div>
                   )}
@@ -88,7 +85,6 @@ export const CarouselComponent = ({ categoria }) => {
             ))}
           </Swiper>
 
-          {/* Puntitos indicadores */}
           <div className="flex justify-center gap-2 mt-4">
             {imagenes.map((_, i) => (
               <span

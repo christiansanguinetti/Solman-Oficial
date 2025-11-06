@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 
 function App() {
   return (
-    <div className="bg-purple-100 min-h-screen">
+    <div className="min-h-screen">
       <Router />
     </div>
   );

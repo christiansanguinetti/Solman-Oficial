@@ -49,7 +49,7 @@ backend/.cache/
 # 🪝 Git Hooks personalizadas
 .husky/
 
-# 🔧 Otros binarios o salidas temporales
+
 *.tgz
 *.zip
 *.tmp

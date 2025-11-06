@@ -3,56 +3,54 @@ import React from "react";
 const HomePage = () => {
   return (
     <>
-      <h3 className="text-xl font-bold text-gray-800 mt-10">
+      <h3 className="text-xl font-bold text-white mt-10 drop-shadow-lg">
         Electricidad, Domótica y Automatismos para tu hogar y empresa.
       </h3>
 
-      <p className="text-gray-700 mt-4">
-        En Solman, ofrecemos una amplia gama de servicios para satisfacer todas tus necesidades eléctricas y de automatización. Desde instalaciones eléctricas hasta sistemas de domótica avanzados, nuestro equipo de expertos está aquí para ayudarte a crear un entorno más eficiente y cómodo.
+      <p className="text-white/80 mt-4 drop-shadow-sm">
+        En Solman nos enfocamos en brindar soluciones integrales en electricidad, eficiencia energética, movilidad eléctrica, domótica y automatización de riego. Cada servicio está diseñado para mejorar la seguridad, el confort y la productividad de nuestros clientes, cumpliendo siempre con las normativas vigentes.
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-800 mt-6">Servicios que ofrecemos:</h4>
+      <div className="mt-10 space-y-10">
+        {/* Electricidad */}
+        <div>
+          <h3 className="text-2xl font-bold text-white drop-shadow-xl">Electricidad 🔌</h3>
+          <p className="text-white/80 mt-2 drop-shadow-sm">
+            Brindamos Instalaciones Eléctricas Seguras en hogares, comercios e industrias. Realizamos reparaciones, actualizaciones y proyectos desde cero, siempre bajo el Reglamento de Baja Tensión de UTE para evitar riesgos y garantizar calidad.
+          </p>
+        </div>
 
-      <div className="mt-6">
-        <h3 className="text-2xl font-bold text-gray-900">Domótica 🏠⚡</h3>
-        <p className="text-gray-700 mt-2">
-          La domótica se enfoca en la automatización del hogar para mejorar la eficiencia energética, la seguridad y la comodidad. Algunas áreas importantes que trabajamos son:
-        </p>
-        <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
-          <li><strong>Sistemas de control inteligente:</strong> Iluminación, climatización, persianas motorizadas.</li>
-          <li><strong>Seguridad:</strong> Cámaras de vigilancia, cerraduras electrónicas, sensores de movimiento.</li>
-          <li><strong>Protocolos de comunicación:</strong> Zigbee, Z-Wave, Wi-Fi, Bluetooth, KNX.</li>
-          <li><strong>Integración con asistentes virtuales:</strong> Alexa, Google Assistant, HomeKit.</li>
-          <li><strong>Automatización avanzada:</strong> Uso de sensores y escenarios programados.</li>
-        </ul>
-      </div>
+        {/* Auditorías Energéticas */}
+        <div>
+          <h3 className="text-2xl font-bold text-white drop-shadow-xl">Auditorías Energéticas 🔍</h3>
+          <p className="text-white/80 mt-2 drop-shadow-sm">
+            Evaluamos el estado de tu instalación eléctrica, detectamos fugas y aseguramos el cumplimiento de normativas. Además, te informamos qué electrodomésticos consumen más energía y cómo reducir tu factura de UTE sin perder confort.
+          </p>
+        </div>
 
-      <div className="mt-10">
-        <h3 className="text-2xl font-bold text-gray-900">Electricidad básica 🔌⚡</h3>
-        <p className="text-gray-700 mt-2">
-          Este tema cubre principios fundamentales para entender cómo funciona la electricidad en el hogar y en aplicaciones industriales:
-        </p>
-        <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
-          <li><strong>Conceptos clave:</strong> Voltaje, corriente, resistencia, potencia.</li>
-          <li><strong>Circuitos eléctricos:</strong> Tipos de conexión (serie, paralelo), cálculo de cargas.</li>
-          <li><strong>Protección:</strong> Uso de disyuntores, fusibles, puesta a tierra.</li>
-          <li><strong>Tipos de cableado:</strong> Secciones de cables, materiales, normas de seguridad.</li>
-          <li><strong>Medición y herramientas:</strong> Multímetros, amperímetros, pinzas de corriente.</li>
-        </ul>
-      </div>
+        {/* Movilidad Eléctrica */}
+        <div>
+          <h3 className="text-2xl font-bold text-white drop-shadow-xl">Movilidad Eléctrica 🚗⚡</h3>
+          <p className="text-white/80 mt-2 drop-shadow-sm">
+            Realizamos instalaciones seguras de cargadores para vehículos eléctricos, siguiendo normativas técnicas y utilizando los elementos adecuados para una carga eficiente, confiable y adaptada a tus necesidades.
+          </p>
+        </div>
 
-      <div className="mt-10">
-        <h3 className="text-2xl font-bold text-gray-900">Automatismo 🤖⚙️</h3>
-        <p className="text-gray-700 mt-2">
-          El automatismo industrial se basa en el uso de dispositivos electrónicos y mecánicos para controlar procesos sin intervención humana:
-        </p>
-        <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
-          <li><strong>PLC (Controladores Lógicos Programables):</strong> Son el cerebro de la automatización.</li>
-          <li><strong>Sensores y actuadores:</strong> De temperatura, presión, proximidad.</li>
-          <li><strong>Interfaces HMI:</strong> Pantallas táctiles para supervisión de procesos.</li>
-          <li><strong>Motores y variadores de frecuencia:</strong> Control de velocidad y eficiencia energética.</li>
-          <li><strong>Comunicación industrial:</strong> Modbus, Profibus, Ethernet industrial.</li>
-        </ul>
+        {/* Domótica */}
+        <div>
+          <h3 className="text-2xl font-bold text-white drop-shadow-xl">Domótica 🏠🌐</h3>
+          <p className="text-white/80 mt-2 drop-shadow-sm">
+            Adaptamos hogares y comercios con tecnología Smart. Controlá iluminación, climatización, seguridad y más desde cualquier lugar del mundo. Mejoramos tu calidad de vida con automatización inteligente, seguridad y eficiencia energética.
+          </p>
+        </div>
+
+        {/* Automatización de Riegos */}
+        <div>
+          <h3 className="text-2xl font-bold text-white drop-shadow-xl">Automatización de Riegos 🌱💧</h3>
+          <p className="text-white/80 mt-2 drop-shadow-sm">
+            Instalamos tecnología que permite controlar y gestionar el riego de cultivos o jardines en forma automática y remota. Ahorrás agua, energía y mano de obra, mientras optimizás el crecimiento y rendimiento de tus espacios verdes.
+          </p>
+        </div>
       </div>
     </>
   );
