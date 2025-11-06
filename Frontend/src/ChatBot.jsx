@@ -3,8 +3,8 @@ import { FaWhatsapp, FaUser, FaRobot, FaPaperPlane, FaCommentDots } from "react-
 
 const respuestasBot = {
   horario: "Nuestro horario de atención es de lunes a viernes de 10:00 a 18:00 hs 🕐",
-  contacto: "Podés escribirnos por WhatsApp al +598 XXX XXX XXX 📱",
-  whatsapp: "Este es nuestro número de WhatsApp: +598 XXX XXX XXX 📞",
+  contacto: "Podés escribirnos por WhatsApp al +598 094897080 📱",
+  
   categorias: "Ofrecemos productos en las categorías: Tecnología, Seguridad, Herramientas y más.",
   saludo: "¡Hola! Soy el asistente virtual 🤖 ¿En qué puedo ayudarte?",
   desconocido: "No entendí tu mensaje 🤔. Si querés, podés escribirnos por WhatsApp directamente.",
@@ -116,7 +116,7 @@ const ChatBot = () => {
           <div className="text-center text-xs text-gray-500 py-2 bg-gray-100">
             ¿Querés hablar con alguien?{" "}
             <a
-              href="https://wa.me/598XXXXXXXX"
+              href="https://wa.me/59894897080"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-purple-600 font-medium"
