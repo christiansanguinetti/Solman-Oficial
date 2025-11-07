@@ -26,9 +26,13 @@ app.use("/", authRoutes);
 app.get("/", (req, res) => {
   res.send("✅ Backend Solman operativo");
 });
-// ✅ Conexión a MongoDB
+
+// ✅ Conexión a MongoDB Atlas
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("✅ MongoDB conectado");
     app.listen(5000, () => {
