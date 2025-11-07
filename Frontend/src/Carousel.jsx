@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/navigation";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const CarouselComponent = ({ categoria }) => {
   const [imagenes, setImagenes] = useState([]);
@@ -17,7 +20,7 @@ export const CarouselComponent = ({ categoria }) => {
   useEffect(() => {
     if (!categoria) return;
     axios
-      .get(`http://localhost:5000/carousel?categoria=${categoria.toLowerCase()}`)
+      .get(`${API_URL}/api/carousel?categoria=${categoria.toLowerCase()}`)
       .then((res) => setImagenes(res.data))
       .catch((err) => console.error("Error al cargar imágenes:", err));
   }, [categoria]);
@@ -25,7 +28,7 @@ export const CarouselComponent = ({ categoria }) => {
   const handleDelete = async (id) => {
     if (!window.confirm("¿Eliminar esta imagen?")) return;
     try {
-      await axios.delete(`http://localhost:5000/carousel/${id}`, {
+      await axios.delete(`${API_URL}/api/carousel/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setImagenes((prev) => prev.filter((img) => img._id !== id));
@@ -69,7 +72,7 @@ export const CarouselComponent = ({ categoria }) => {
                   )}
 
                   <img
-                    src={`http://localhost:5000/${img.imageUrl}`}
+                    src={`${API_URL}/${img.imageUrl}`}
                     alt={img.caption || "Imagen"}
                     onClick={abrirFullscreen}
                     className="max-w-full max-h-[90vh] object-contain cursor-zoom-in transition-transform duration-300 hover:scale-105"

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const UploadForm = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -36,10 +38,7 @@ const UploadForm = () => {
 
     if (!image) return setMensaje("📸 Seleccioná una imagen primero.");
     if (!categoria) return setMensaje("⚠️ Seleccioná una categoría.");
-
-    if (!token) {
-      return setMensaje("🔐 No estás logueado. Iniciá sesión primero.");
-    }
+    if (!token) return setMensaje("🔐 No estás logueado. Iniciá sesión primero.");
 
     const formData = new FormData();
     formData.append("image", image);
@@ -48,9 +47,10 @@ const UploadForm = () => {
 
     try {
       for (let [clave, valor] of formData.entries()) {
-  console.log(`🧾 Campo: ${clave}`, valor);
-}
-      await axios.post("http://localhost:5000/carousel/upload", formData, {
+        console.log(`🧾 Campo: ${clave}`, valor);
+      }
+
+      await axios.post(`${API_URL}/api/carousel/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
