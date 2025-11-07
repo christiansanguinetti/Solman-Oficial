@@ -7,7 +7,7 @@ import Seguridad from "./Seguridad";
 import QuienesSomos from "./QuienesSomos";
 import LoginForm from "./LoginForm";
 import UploadForm from "./UploadForm";
-
+// ✅ Ruta /login corregida para producción
 const Router = () => {
   const token = localStorage.getItem("token");
 
