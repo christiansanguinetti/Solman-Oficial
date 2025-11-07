@@ -36,7 +36,6 @@ router.post("/upload", verificarToken, (req, res, next) => {
       return res.status(400).json({ message: "Error al subir la imagen", error: err.message });
     }
 
-    // 👇 Ya estamos adentro de la callback luego de que Multer terminó
     const { file, body } = req;
 
     console.log("🖼️ Imagen recibida:", file);
@@ -50,8 +49,11 @@ router.post("/upload", verificarToken, (req, res, next) => {
       return res.status(400).json({ message: "La categoría es obligatoria." });
     }
 
+    // ✅ URL absoluta para producción
+    const imageUrl = `https://solmanbackend.onrender.com/uploads/${file.filename}`;
+
     const nuevaImagen = new CarouselImage({
-      imageUrl: `uploads/${file.filename}`,
+      imageUrl,
       caption: body.caption || "",
       categoria: body.categoria.toLowerCase().trim(),
     });
@@ -65,6 +67,8 @@ router.post("/upload", verificarToken, (req, res, next) => {
       });
   });
 });
+
+// 🗑️ Ruta para eliminar imagen
 router.delete("/:id", verificarToken, async (req, res) => {
   const { id } = req.params;
   try {
@@ -74,7 +78,6 @@ router.delete("/:id", verificarToken, async (req, res) => {
     res.status(500).json({ error: "Error al eliminar" });
   }
 });
-
 
 // 📥 Ruta para obtener imágenes por categoría (o todas si no se pasa una)
 router.get("/", async (req, res) => {
