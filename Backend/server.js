@@ -23,7 +23,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // ✅ Rutas
 app.use("/api/carousel", carouselRoutes);
 app.use("/", authRoutes);
-
+app.get("/", (req, res) => {
+  res.send("✅ Backend Solman operativo");
+});
 // ✅ Conexión a MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
