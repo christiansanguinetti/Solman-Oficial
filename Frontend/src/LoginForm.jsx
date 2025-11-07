@@ -30,35 +30,36 @@ const LoginForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleLogin}
-      className="max-w-sm mx-auto mt-20 p-6 bg-white rounded shadow"
-    >
-      <h2 className="text-xl font-bold mb-4">Iniciar sesión</h2>
-      <input
-        type="text"
-        placeholder="Usuario"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="block w-full mb-4 p-2 border rounded"
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="block w-full mb-4 p-2 border rounded"
-      />
-      <button
-        type="submit"
-        className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800"
-      >
-        Ingresar
-      </button>
-      {mensaje && (
-        <p className="mt-4 text-sm text-gray-700 text-center">{mensaje}</p>
-      )}
-    </form>
+   <form
+  onSubmit={handleLogin}
+  className="max-w-sm mx-auto mt-20 p-6 bg-white rounded shadow text-black"
+>
+  <h2 className="text-xl font-bold mb-4">Iniciar sesión</h2>
+  <input
+    type="text"
+    placeholder="Usuario"
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+    className="block w-full mb-4 p-2 border rounded"
+  />
+  <input
+    type="password"
+    placeholder="Contraseña"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    className="block w-full mb-4 p-2 border rounded"
+  />
+  <button
+    type="submit"
+    className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800"
+  >
+    Ingresar
+  </button>
+  {mensaje && (
+    <p className="mt-4 text-sm text-black text-center">{mensaje}</p>
+  )}
+</form>
+
   );
 };
 
