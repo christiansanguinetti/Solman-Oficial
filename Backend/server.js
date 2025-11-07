@@ -21,7 +21,7 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // ✅ Rutas
-app.use("/carousel", carouselRoutes);
+app.use("/api/carousel", carouselRoutes);
 app.use("/", authRoutes);
 
 // ✅ Conexión a MongoDB
