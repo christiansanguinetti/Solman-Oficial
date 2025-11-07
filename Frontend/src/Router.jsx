@@ -14,7 +14,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 🆕 Ruta oculta que muestra UploadForm solo si hay token */}
+        {/* 🆕 Ruta protegida para subir imágenes */}
         <Route
           path="/panel"
           element={
@@ -26,13 +26,13 @@ const Router = () => {
           }
         />
 
-        {/* Login secreto */}
+        {/* ✅ Ruta de login corregida */}
         <Route
-          path="/LoginForm"
+          path="/login"
           element={<LoginForm onLoginSuccess={() => (window.location.href = "/panel")} />}
         />
 
-        {/* Rutas normales con Layout */}
+        {/* 🌐 Rutas públicas con layout */}
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/ruta-prueba" element={<h1>Ruta de prueba</h1>} />
@@ -40,6 +40,7 @@ const Router = () => {
           <Route path="/quienes-somos" element={<QuienesSomos />} />
         </Route>
 
+        {/* 🧯 Ruta de error */}
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
