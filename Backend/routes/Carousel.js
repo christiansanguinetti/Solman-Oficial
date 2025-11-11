@@ -1,24 +1,20 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
+const cloudinary = require("cloudinary").v2;
 const CarouselImage = require("../models/CarouselImage");
 const verificarToken = require("../middlewares/verificarToken");
 
 const router = express.Router();
 
-// ⚙️ Configuración del almacenamiento con multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    const ext = path.extname(file.originalname);
-    const uniqueName = Date.now() + "-" + file.originalname;
-    cb(null, uniqueName);
-  },
+// ✅ Configuración Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// 🛡️ Filtro de tipo MIME para aceptar solo imágenes
+// ✅ Multer en memoria (no guarda en disco)
+const storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
@@ -26,49 +22,43 @@ const fileFilter = (req, file, cb) => {
     cb(new Error("Solo se permiten archivos de imagen."), false);
   }
 };
-
 const upload = multer({ storage, fileFilter });
 
-// ✅ Ruta de subida de imagen al carrusel
-router.post("/upload", verificarToken, (req, res, next) => {
-  upload.single("image")(req, res, function (err) {
-    if (err) {
-      return res.status(400).json({ message: "Error al subir la imagen", error: err.message });
+// ✅ Subida de imagen a Cloudinary
+router.post("/upload", verificarToken, upload.single("image"), (req, res) => {
+  const { file, body } = req;
+
+  if (!file) {
+    return res.status(400).json({ message: "No se recibió ninguna imagen." });
+  }
+
+  if (!body.categoria) {
+    return res.status(400).json({ message: "La categoría es obligatoria." });
+  }
+
+  cloudinary.uploader.upload_stream({ resource_type: "image" }, async (error, result) => {
+    if (error) {
+      console.error("❌ Error al subir a Cloudinary:", error);
+      return res.status(500).json({ message: "Error al subir imagen", error: error.message });
     }
-
-    const { file, body } = req;
-
-    console.log("🖼️ Imagen recibida:", file);
-    console.log("📥 Body recibido:", body);
-
-    if (!file) {
-      return res.status(400).json({ message: "No se recibió ninguna imagen." });
-    }
-
-    if (!body.categoria) {
-      return res.status(400).json({ message: "La categoría es obligatoria." });
-    }
-
-    // ✅ URL absoluta para producción
-    const imageUrl = `https://solmanbackend.onrender.com/uploads/${file.filename}`;
 
     const nuevaImagen = new CarouselImage({
-      imageUrl,
+      imageUrl: result.secure_url,
       caption: body.caption || "",
       categoria: body.categoria.toLowerCase().trim(),
     });
 
-    nuevaImagen
-      .save()
-      .then((saved) => res.status(201).json(saved))
-      .catch((err) => {
-        console.error("❌ Error al guardar imagen:", err);
-        res.status(500).json({ message: "Error al guardar imagen", error: err.message });
-      });
-  });
+    try {
+      const saved = await nuevaImagen.save();
+      res.status(201).json(saved);
+    } catch (err) {
+      console.error("❌ Error al guardar imagen:", err);
+      res.status(500).json({ message: "Error al guardar imagen", error: err.message });
+    }
+  }).end(file.buffer);
 });
 
-// 🗑️ Ruta para eliminar imagen
+// 🗑️ Eliminar imagen
 router.delete("/:id", verificarToken, async (req, res) => {
   const { id } = req.params;
   try {
@@ -79,7 +69,7 @@ router.delete("/:id", verificarToken, async (req, res) => {
   }
 });
 
-// 📥 Ruta para obtener imágenes por categoría (o todas si no se pasa una)
+// 📥 Obtener imágenes por categoría (o todas)
 router.get("/", async (req, res) => {
   const filtro = req.query.categoria ? { categoria: req.query.categoria } : {};
 
