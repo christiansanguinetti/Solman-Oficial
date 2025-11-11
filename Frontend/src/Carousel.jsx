@@ -72,7 +72,7 @@ export const CarouselComponent = ({ categoria }) => {
                   )}
 
                   <img
-                    src={`${API_URL}/${img.imageUrl}`}
+                    src={img.imageUrl}
                     alt={img.caption || "Imagen"}
                     onClick={abrirFullscreen}
                     className="max-w-full max-h-[90vh] object-contain cursor-zoom-in transition-transform duration-300 hover:scale-105"
