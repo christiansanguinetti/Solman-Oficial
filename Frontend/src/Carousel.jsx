@@ -47,10 +47,9 @@ export const CarouselComponent = ({ categoria }) => {
   return (
     <div className="mx-auto w-full max-w-screen-lg px-0 py-6">
       {imagenes.length === 0 ? (
-       <p className="text-center text-white/70">
-  No hay imágenes disponibles en esta categoría.
-</p>
-
+        <p className="text-center text-white/70">
+          No hay imágenes disponibles en esta categoría.
+        </p>
       ) : (
         <>
           <Swiper
@@ -74,6 +73,7 @@ export const CarouselComponent = ({ categoria }) => {
                     </button>
                   )}
 
+                  {/* 👇 Usar directamente la URL absoluta de Cloudinary */}
                   <img
                     src={img.imageUrl}
                     alt={img.caption || "Imagen"}
