@@ -30,6 +30,36 @@ const QuienesSomos = () => {
       <p className="text-white/80 drop-shadow-sm">
         También priorizamos cuidar tu inversión económica, ofreciéndote productos de calidad y valor. Realizamos <strong>instalaciones eficientes</strong>, diseñadas para generar menos gastos a largo plazo.
       </p>
+        {/* Contacto */}
+<div className="mt-16 border-t border-white/20 pt-8 text-center">
+  <h2 className="text-2xl font-bold text-white mb-4 drop-shadow-md">
+    Contacto
+  </h2>
+
+  <p className="text-white/80 mb-2">
+    ¿Querés asesoramiento o un presupuesto personalizado?
+  </p>
+
+  <p className="text-white/90">
+    {" "}
+    <a
+      href="mailto:solmanoficial1919@gmail.com"
+      className="hover:text-white underline"
+    >
+      solmanoficial1919@gmail.com
+    </a>
+  </p>
+
+  <p className="text-white/90 mt-1">
+    📞{" "}
+    <a
+      href="tel:094897080"
+      className="hover:text-white underline"
+    >
+      094 897 080
+    </a>
+  </p>
+</div>
     </div>
   );
 };

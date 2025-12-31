@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import ModernContainer from "./ModernContainer";
 import CarruselPorRuta from "./CarruselPorRuta";
 import UploadModal from "./UploadModal";
-import ChatBot from "./ChatBot";
+import WhatsAppButton from "./WhatsAppButton";
 
 const Layout = () => {
   const location = useLocation();
@@ -100,7 +100,7 @@ const Layout = () => {
             </AnimatePresence>
           </ModernContainer>
 
-          <ChatBot />
+          <WhatsAppButton />
         </div>
       </section>
     </div>
