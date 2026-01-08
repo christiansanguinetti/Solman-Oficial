@@ -73,7 +73,7 @@ const Navbar = () => {
 
               <div className="flex gap-3 items-center relative">
 
-                {/* INSTAGRAM (MISMO ICONO QUE ANTES) */}
+                {/* INSTAGRAM */}
                 <button
                   onClick={() => setOpenIg(!openIg)}
                   className="text-pink-500 hover:text-pink-600 transition-transform hover:scale-110"
@@ -83,7 +83,6 @@ const Navbar = () => {
                   </svg>
                 </button>
 
-                {/* DROPDOWN IG */}
                 {openIg && (
                   <div className="absolute top-8 right-0 bg-gray-900 rounded-md shadow-lg overflow-hidden min-w-[190px]">
                     <a
@@ -105,7 +104,7 @@ const Navbar = () => {
                   </div>
                 )}
 
-                {/* FACEBOOK (IGUAL QUE ANTES) */}
+                {/* FACEBOOK */}
                 <a
                   href="https://www.facebook.com/share/19zKWjZQqz/?mibextid=wwXIfr"
                   target="_blank"
@@ -122,6 +121,64 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* MENÚ MOBILE */}
+      {isMobileMenuOpen && (
+        <div className="sm:hidden absolute top-16 left-0 w-full bg-gray-800 shadow-lg z-40">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+
+            <NavLink to="/" className={mobileLinkClass} onClick={cerrarMenu}>
+              Electricidad
+            </NavLink>
+
+            <NavLink to="/seguridad" className={mobileLinkClass} onClick={cerrarMenu}>
+              Seguridad
+            </NavLink>
+
+            <NavLink to="/quienes-somos" className={mobileLinkClass} onClick={cerrarMenu}>
+              Quiénes Somos
+            </NavLink>
+
+            {usuario && (
+              <div className="px-3 py-2 text-sm text-gray-300">
+                Bienvenido, <span className="font-semibold text-white">{usuario}</span>
+              </div>
+            )}
+
+            <a
+              href="https://www.instagram.com/solmanelectricidad.uy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              onClick={cerrarMenu}
+            >
+              ⚡ Instagram Electricidad
+            </a>
+
+            <a
+              href="https://www.instagram.com/solmanseguridad.uy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              onClick={cerrarMenu}
+            >
+              🔒 Instagram Seguridad
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/19zKWjZQqz/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+              onClick={cerrarMenu}
+            >
+              📘 Facebook
+            </a>
+
+          </div>
+        </div>
+      )}
+
     </nav>
   );
 };
