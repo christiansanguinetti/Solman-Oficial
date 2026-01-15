@@ -51,7 +51,7 @@ const QuienesSomos = () => {
   </p>
 
   <p className="text-white/90 mt-1">
-    📞{" "}
+    {" "}
     <a
       href="tel:094897080"
       className="hover:text-white underline"

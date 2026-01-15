@@ -5,7 +5,7 @@ const Seguridad = () => {
   return (
     <div className="py-8">
       <h1 className="text-3xl font-bold text-white mb-4 drop-shadow-lg">
-        Tecnología en Seguridad 🔐
+        Tecnología en Seguridad 
       </h1>
 
       <p className="text-white/80 drop-shadow-sm">
@@ -74,7 +74,7 @@ const Seguridad = () => {
   </p>
 
   <p className="text-white/90 mt-1">
-    📞{" "}
+    {" "}
     <a
       href="tel:094897080"
       className="hover:text-white underline"

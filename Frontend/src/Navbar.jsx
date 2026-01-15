@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logoSolman from "./assets/logo-solman.jpeg";
+import logoSolman from "./assets/icono-solman.jpeg";
 import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
@@ -91,7 +91,7 @@ const Navbar = () => {
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-white hover:bg-gray-700 text-sm"
                     >
-                      ⚡ Instagram Electricidad
+                       Instagram Electricidad
                     </a>
                     <a
                       href="https://www.instagram.com/solmanseguridad.uy"
@@ -99,7 +99,7 @@ const Navbar = () => {
                       rel="noopener noreferrer"
                       className="block px-4 py-2 text-white hover:bg-gray-700 text-sm"
                     >
-                      🔒 Instagram Seguridad
+                       Instagram Seguridad
                     </a>
                   </div>
                 )}
@@ -152,7 +152,7 @@ const Navbar = () => {
               className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
               onClick={cerrarMenu}
             >
-              ⚡ Instagram Electricidad
+               Instagram Electricidad
             </a>
 
             <a
@@ -162,7 +162,7 @@ const Navbar = () => {
               className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
               onClick={cerrarMenu}
             >
-              🔒 Instagram Seguridad
+               Instagram Seguridad
             </a>
 
             <a
@@ -172,7 +172,7 @@ const Navbar = () => {
               className="block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
               onClick={cerrarMenu}
             >
-              📘 Facebook
+               Facebook
             </a>
 
           </div>
